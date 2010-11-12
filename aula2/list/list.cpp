@@ -7,27 +7,32 @@ void mylist::insert(int v)
 	struct st_node *aux2;
 
 	aux->data = v;
-	cout << "insert" << endl;
+	//cout << "insert" << v << endl;
 
 	if (this->elem == NULL) {
 		this->elem = aux;
-		this->head = aux;
-		cout << "first element filled" << endl;
 		return;
 	}
-
-	while (this->elem->next != NULL) {
-		this->elem = this->elem->next;
-		cout << "looking for" << endl;
+	aux2 = this->elem;
+	while (aux2->next != NULL) {
+		aux2 = aux2->next;
+		//cout << ".";
 	}
-	
-	cout << "found the last" << endl;
-	this->elem->next = aux;
+	//cout << endl;
+	aux2->next = aux;
 }
 
 void mylist::show(void)
 {
-	cout << this->elem->data << endl;
+	struct st_node *aux;
+	aux = this->elem;
+
+	cout << "show: " << endl;
+	while (aux != NULL) {
+		cout << aux->data << ". ";
+		aux = aux->next;
+	}
+	cout << endl;
 }
 
 mylist::mylist(void)
@@ -37,6 +42,18 @@ mylist::mylist(void)
 
 mylist::~mylist(void)
 {
-
+	struct st_node *next;
+	struct st_node *aux;
+	
+	aux= this->elem;
+	next = this->elem->next;
+	while (aux != NULL) {
+		cout << "deleting " << aux->data << endl;
+		delete (aux);
+		aux = NULL;
+		aux = next;
+		if (aux != NULL)
+			next = aux->next;
+	}
 }
 

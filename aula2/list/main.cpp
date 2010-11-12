@@ -11,5 +11,9 @@ int main(void)
 	list.insert(4);
 	list.insert(5);
 	list.show();
+	list.insert(9);
+	list.insert(9);
+	list.insert(-2);
+	list.show();
 	return 0;
 }
