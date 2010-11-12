@@ -3,23 +3,36 @@
 
 void mylist::insert(int v)
 {
-	mylist aux;
+	struct st_node *aux = new struct st_node;
+	struct st_node *aux2;
 
-	while (this->elem.next != NULL) {
-		this->elem = this->elem.next;
+	aux->data = v;
+	cout << "insert" << endl;
+
+	if (this->elem == NULL) {
+		this->elem = aux;
+		this->head = aux;
+		cout << "first element filled" << endl;
+		return;
 	}
-	n.next = &aux.elem;
-	n.next->data = v;
+
+	while (this->elem->next != NULL) {
+		this->elem = this->elem->next;
+		cout << "looking for" << endl;
+	}
+	
+	cout << "found the last" << endl;
+	this->elem->next = aux;
 }
 
 void mylist::show(void)
 {
-
+	cout << this->elem->data << endl;
 }
 
 mylist::mylist(void)
 {
-	
+	this->elem=NULL;
 }
 
 mylist::~mylist(void)

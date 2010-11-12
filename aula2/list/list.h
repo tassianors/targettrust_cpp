@@ -1,13 +1,13 @@
 using namespace std;
 
-struct no {
+struct st_node {
 	int data;
-	struct no *next;
+	struct st_node *next;
 };
 
 class mylist {
 	private:
-		struct no elem;
+		struct st_node *elem;
 	public:
 		void insert(int v);
 		void show(void);
