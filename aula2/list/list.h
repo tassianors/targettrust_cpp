@@ -14,4 +14,3 @@ class mylist {
 		mylist(void);
 		~mylist(void);
 };
-
