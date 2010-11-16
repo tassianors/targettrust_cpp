@@ -35,7 +35,6 @@ myVector myVector::operator+(const myVector &v)
 	
 	return tmp;
 }
-
 /***********************************************************************/
 
 myVector myVector::operator+(int v)
@@ -138,12 +137,18 @@ int myVector::operator[](int i)
 
 /***********************************************************************/
 
+int& myVector::operator()(int i)
+{
+	return this->vet[i];
+}
+/***********************************************************************/
+
 istream &operator>>(istream &in, const myVector &v)
 {
 	int i;
 
 	for (i = 0; i < v.len; i++)
-		cin >> v.vet[i];
+		in >> v.vet[i];
 
 	return in;
 }
