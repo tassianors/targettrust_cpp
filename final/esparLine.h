@@ -24,7 +24,7 @@ class esparLine: public line {
 		int operator[](int j);
 
 	private:
-		void add(int pos, int val);
+		int & add(int pos, int val);
 		void show(void);
 
 		struct st_node *head;

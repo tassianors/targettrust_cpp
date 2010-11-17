@@ -12,11 +12,12 @@ class line;
 class matrix {
 	public:
 		matrix(int nl, int nc, int null);
+		matrix(const matrix &m);
 		~matrix();
 		
-		int getNLines(void);
-		int getNCol(void);
-		int getNull(void);
+		unsigned int getNLines(void) const;
+		unsigned int getNCol(void) const;
+		unsigned int getNull(void) const;
 
 		line& operator()(int i);
 		line& operator[](int i);
@@ -28,8 +29,8 @@ class matrix {
 		matrix& operator=(const matrix &m);
 		bool operator==(const matrix &m);
 		
-		friend istream &operator>>(istream &in, const matrix &m);
-		friend ostream &operator<<(ostream &out, const matrix &m);
+		friend istream &operator>>(istream &in, matrix &m);
+		friend ostream &operator<<(ostream &out, matrix &m);
 		void clearLines(void);
 
 	private:

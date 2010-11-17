@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-//#include "matrix.h"
+#define PRINT_INFO		0//cout << __FILE__<< "::" << __LINE__ << "::" << __FUNCTION__ << endl
 
 using namespace std;
 
@@ -16,7 +16,6 @@ class line {
 		virtual ~line() = 0;
 		virtual int& operator()(int j) = 0;
 		virtual int operator[](int j) = 0;
-
 	private:
 		int ncol;
 		matrix  *owner;
