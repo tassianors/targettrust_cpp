@@ -26,7 +26,8 @@ matrix::matrix(const matrix &m)
 
 	for (int i = 0; i < m.getNLines(); i++) {
 		for (int j = 0; j < m.getNCol(); j++) {
-			(*this)(i)(j) = m[i][j];
+			if (m[i][j] != m.getNull())
+				(*this)(i)(j) = m[i][j];
 		}
 	}
 }
@@ -136,7 +137,10 @@ istream& operator>>(istream &in, matrix &m)
 	PRINT_INFO;
 	for (i = 0; i < m.getNLines(); i++) {
 		for (j = 0; j < m.getNCol(); j++) {
-			in >> m(i)(j);
+			int aux =0;
+			in >> aux;
+			if (aux != m.getNull())
+				m(i)(j) = aux;
 		}
 	}
 	return in;
@@ -150,7 +154,11 @@ ostream& operator<<(ostream &out, matrix &m)
 	PRINT_INFO;
 	for (i = 0; i < m.getNLines(); i++) {
 		for (j = 0; j < m.getNCol(); j++) {
-			out << m[i][j] << " ";
+			int aux = m[i][j];
+			if (aux == m.getNull())
+				out << "-" << " ";
+			else 
+				out << aux << " ";
 		}
 		out << endl;
 	}

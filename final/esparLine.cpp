@@ -43,6 +43,7 @@ void esparLine::show(void)
 esparLine::esparLine(int ncol, int i, matrix *m): line(ncol, m), lineIndex(i)
 {
 	PRINT_INFO;
+	this->owner = m;
 	this->head = NULL;
 }
 
@@ -79,11 +80,13 @@ int& esparLine::operator()(int j)
 		node = this->head;
 
 	while (node != NULL) {
-		if (node->position == j)
+		if (node->position == j) {
+			PRINT_INFO;
 			return node->elem;
+		}
 		node = node->next;
 	}
-	return this->add(j, 0);
+	return this->add(j, this->owner->getNull());
 }
 /***********************************************************************/
 int esparLine::operator[](int j) const
@@ -94,11 +97,13 @@ int esparLine::operator[](int j) const
 		node = this->head;
 
 	while (node != NULL) {
-		if (node->position == j)
+		if (node->position == j) {
+			PRINT_INFO;
 			return node->elem;
+		}
 		node = node->next;
 	}
-	return 0;//this->add(j, 0);
+	return this->owner->getNull();
 }
 /***********************************************************************/
 

@@ -16,7 +16,7 @@ class line {
 		virtual ~line() = 0;
 		virtual int& operator()(int j) = 0;
 		virtual int operator[](int j) const = 0;
-	private:
+	protected:
 		int ncol;
 		matrix  *owner;
 };

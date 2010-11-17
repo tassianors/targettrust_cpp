@@ -4,8 +4,8 @@
 
 int main(void)
 {
-	matrix m(3,3,255);
-	matrix m3(3, 3, 255);
+	matrix m(3,3,12);
+	matrix m3(3, 3, 0);
 
 	ifstream fin;
 	fin.open("val.txt", ios::in);
