@@ -21,7 +21,7 @@ class esparLine: public line {
 		~esparLine();
 
 		int& operator()(int j);
-		int operator[](int j);
+		int operator[](int j) const;
 
 	private:
 		int & add(int pos, int val);

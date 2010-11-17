@@ -15,7 +15,7 @@ class line {
 		line(int c, matrix *m);
 		virtual ~line() = 0;
 		virtual int& operator()(int j) = 0;
-		virtual int operator[](int j) = 0;
+		virtual int operator[](int j) const = 0;
 	private:
 		int ncol;
 		matrix  *owner;

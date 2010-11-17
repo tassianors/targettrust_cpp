@@ -15,7 +15,7 @@ class normalLine: public line {
 		~normalLine();
 
 		int& operator()(int j);
-		int operator[](int j);
+		int operator[](int j) const;
 	private:
 		int *elem;
 };

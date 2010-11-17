@@ -16,11 +16,17 @@ matrix::matrix(int nl, int nc, int null): nlines(nc), ncol(nc), null(null)
 
 matrix::matrix(const matrix &m)
 {
-	PRINT_INFO;
-	matrix(m.getNLines(), m.getNCol(), m.getNull());
+	this->nlines = m.getNLines();
+	this->ncol = m.getNCol();
+	this->null = m.getNull();
+
+	this->lin = new line*[this->getNLines()];
+	for (int i=0; i< this->nlines; i++)
+		this->lin[i] = new esparLine(this->ncol, i, this);
 
 	for (int i = 0; i < m.getNLines(); i++) {
 		for (int j = 0; j < m.getNCol(); j++) {
+			(*this)(i)(j) = m[i][j];
 		}
 	}
 }
@@ -58,7 +64,7 @@ line& matrix::operator()(int i)
 }
 
 /***********************************************************************/
-line& matrix::operator[](int i)
+line& matrix::operator[](int i) const
 {
 	PRINT_INFO;
 	return *(this->lin[i]);
@@ -68,29 +74,59 @@ line& matrix::operator[](int i)
 matrix matrix::operator+(const matrix &m)
 {
 	PRINT_INFO;
+	for (int i = 0; i < m.getNLines(); i++) {
+		for (int j = 0; j < m.getNCol(); j++) {
+			(*this)(i)(j) += m[i][j];
+		}
+	}
+	return *this;
 }
 
 /***********************************************************************/
 matrix matrix::operator-(const matrix &m)
 {
 	PRINT_INFO;
+	for (int i = 0; i < m.getNLines(); i++) {
+		for (int j = 0; j < m.getNCol(); j++) {
+			(*this)(i)(j) -= m[i][j];
+		}
+	}
+	return *this;
 }
 
 /***********************************************************************/
 matrix matrix::operator*(const matrix &m)
 {
 	PRINT_INFO;
+	for (int i = 0; i < m.getNLines(); i++) {
+		for (int j = 0; j < m.getNCol(); j++) {
+			(*this)(i)(j) *= m[i][j];
+		}
+	}
+	return *this;
 }
 
 /***********************************************************************/
 matrix& matrix::operator=(const matrix &m)
 {
 	PRINT_INFO;
+	for (int i = 0; i < m.getNLines(); i++) {
+		for (int j = 0; j < m.getNCol(); j++) {
+			(*this)(i)(j) = m[i][j];
+		}
+	}
+	return *this;
 }
 /***********************************************************************/
 bool matrix::operator==(const matrix &m)
 {
-	return false;
+	for (int i = 0; i < m.getNLines(); i++) {
+		for (int j = 0; j < m.getNCol(); j++) {
+			if ((*this)[i][j] != m[i][j])
+				return false;
+		}
+	}
+	return true;
 }
 
 /***********************************************************************/

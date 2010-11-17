@@ -20,7 +20,7 @@ class matrix {
 		unsigned int getNull(void) const;
 
 		line& operator()(int i);
-		line& operator[](int i);
+		line& operator[](int i) const;
 
 		matrix operator+(const matrix &m);
 		matrix operator-(const matrix &m);

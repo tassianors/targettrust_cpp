@@ -23,7 +23,7 @@ int& normalLine::operator()(int j)
 	return *(this->elem);
 }
 /***********************************************************************/
-int normalLine::operator[](int j)
+int normalLine::operator[](int j) const
 {
 	cout << __LINE__ << ":: " << __FUNCTION__ << endl;
 	return 0;

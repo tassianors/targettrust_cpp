@@ -7,7 +7,7 @@ int & esparLine::add(int pos, int val)
 	struct st_node *aux2;
 
 	PRINT_INFO;
-	cout << "add "<<val<<endl;
+	//cout << "add "<<val<<endl;
 	aux->elem = val;
 	aux->position = pos;
 
@@ -59,13 +59,15 @@ esparLine::~esparLine(void)
 		cur = NULL;
 
 	while (cur != NULL) {
-		cout << "del " << cur->elem << endl;
+		//cout << "del " << cur->elem << endl;
 		delete (cur);
+		this->size--;
 		cur = NULL;
 		cur = next;
 		if (cur != NULL)
 			next = cur->next;
 	}
+	//cout << "final size = "<< this->size << " - line " << this->lineIndex<< endl;
 }
 
 /***********************************************************************/
@@ -84,7 +86,7 @@ int& esparLine::operator()(int j)
 	return this->add(j, 0);
 }
 /***********************************************************************/
-int esparLine::operator[](int j)
+int esparLine::operator[](int j) const
 {
 	struct st_node *node = NULL;
 
