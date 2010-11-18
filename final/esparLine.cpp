@@ -1,5 +1,6 @@
 /***********************************************************************/
 #include "esparLine.h"
+#include "myexceptions.h"
 /***********************************************************************/
 int & esparLine::add(int pos, int val)
 {
@@ -86,6 +87,7 @@ int& esparLine::operator()(int j)
 		}
 		node = node->next;
 	}
+	throw matrix_excep("nao achei");
 	return this->add(j, this->owner->getNull());
 }
 /***********************************************************************/

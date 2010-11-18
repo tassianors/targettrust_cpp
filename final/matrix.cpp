@@ -1,12 +1,16 @@
 /***********************************************************************/
 #include "matrix.h"
 #include "esparLine.h"
+#include "myexceptions.h"
 
 /***********************************************************************/
 
 matrix::matrix(int nl, int nc, int null): nlines(nc), ncol(nc), null(null)
 {
 	PRINT_INFO;
+	if (nl < 1 || nc < 1)
+		throw matrix_excep("number of lines or columns must be positive!!");
+
 	this->lin = new line*[nl];
 	for (int i=0; i< this->nlines; i++)
 		this->lin[i] = new esparLine(this->ncol, i, this);

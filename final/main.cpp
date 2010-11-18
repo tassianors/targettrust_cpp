@@ -1,12 +1,13 @@
 #include "matrix.h"
+#include "myexceptions.h"
 #include <fstream>
 
 
 int main(void)
 {
-	matrix m(3,3,12);
-	matrix m3(3, 3, 0);
-
+	try {
+		matrix m(3,3,12);
+		matrix m3(3, 3, 0);
 	ifstream fin;
 	fin.open("val.txt", ios::in);
 
@@ -29,6 +30,9 @@ int main(void)
 
 	fin.close();
 	delete m2;
+	} catch (matrix_excep e) {
+		cout << e.what()<<endl;
+	}
 	return 0;
 }
 
